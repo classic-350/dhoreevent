@@ -1,54 +1,62 @@
-import { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" alt="Logo" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import React from 'react';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <nav className="navbar">
+        <div className="nav-brand">
+          <h2>DHORE EVENTS</h2>
+          <p>Precision Planning, Perfect Events</p>
+        </div>
+        <div className="nav-links">
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Get Quote</a>
+        </div>
+      </nav>
+
+      <section className="hero">
+        <div className="hero-content">
+          <h1>Creating Unforgettable <span className="highlight">Moments</span></h1>
+          <p>Premium event management and decoration services since 2018</p>
+          <p>Over 500+ successful events • Corporate • Weddings • Celebrations</p>
+          <div className="hero-buttons">
+            <button className="btn-primary">Get Free Quote</button>
+            <button className="btn-secondary">WhatsApp Us</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="services">
+        <h2>Our Services</h2>
+        <p>Comprehensive event management solutions for every occasion</p>
+        <div className="service-stats">
+          <div className="stat">
+            <span className="icon">✅</span>
+            <span>500+ Events Completed</span>
+          </div>
+          <div className="stat">
+            <span className="icon">🎯</span>
+            <span>6+ Years Experience</span>
+          </div>
+          <div className="stat">
+            <span className="icon">💯</span>
+            <span>100% Client Satisfaction</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="portfolio">
+        <h2>Our Portfolio</h2>
+        <p>Showcasing our expertise across diverse events</p>
+        <div className="portfolio-note">
+          <p>🎨 Beautiful event galleries and testimonials coming soon!</p>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default App
+export default App;
